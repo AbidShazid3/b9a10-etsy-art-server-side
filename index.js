@@ -41,6 +41,10 @@ async function run() {
         const currentCraft = await craftCollection.findOne(query);
         res.send(currentCraft);
     })
+    app.get("/myArtCraft/:email", async(req, res)=>{
+        const result = await craftCollection.find({email:req.params.email}).toArray();
+        res.send(result)
+    })
 
     app.post("/craft", async(req, res)=>{
         const newCraft = req.body;
